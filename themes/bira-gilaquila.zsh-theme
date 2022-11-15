@@ -1,6 +1,8 @@
 # ZSH Theme - Preview: https://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 
+hostnamecolor=$(md5sum <<<"$HOSTNAME"  | cut -c-2  | xargs -i printf "%d\n" "0x{}" | awk '{printf("%03d\n", int($0))}')
+
 if [[ $UID -eq 0 ]]; then
     local user_host='%{$terminfo[bold]$fg[red]%}%n@%{$reset_color%}%{$FG[$hostnamecolor]%}%m%{$reset_color%}'
     local user_symbol='#'
